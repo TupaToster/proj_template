@@ -18,7 +18,7 @@ FILE* logOutf = NULL;
                 logOutf = fopen ("logs_out", "a");                                                \
                 setvbuf (logOutf, NULL, _IONBF, 0);                                               \
                 fprintf (logOutf, "----------------------------------------\n"                    \
-                "Logging session at compiled time : %s %s \n\n", __TIME__, __DATE__);             \
+                "Logging session at compiled time : %s %s\n\n", __TIME__, __DATE__);             \
             }                                                                                     \
             flogIntern (&a, typeid (a).name (), #a, sizeof (a), __FILE__, __FUNCTION__, __LINE__)
 
@@ -27,7 +27,7 @@ FILE* logOutf = NULL;
                 logOutf = fopen ("logs_out", "a");                                                \
                 setvbuf (logOutf, NULL, _IONBF, 0);                                               \
                 fprintf (logOutf, "----------------------------------------\n"                    \
-                "Logging session at compiled time : %s %s \n\n", __TIME__, __DATE__);             \
+                "Logging session at compiled time : %s %s\n\n", __TIME__, __DATE__);             \
     }                                                                                             \
     fprintf (logOutf, __VA_ARGS__)
 
