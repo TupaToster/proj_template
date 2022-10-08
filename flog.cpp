@@ -4,11 +4,7 @@
 #pragma GCC diagnostic ignored "-Wsign-compare"
 #pragma GCC diagnostic ignored "-Wformat-extra-args"
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <typeinfo>
-#include <time.h>
-#include <string.h>
+#include "flog.h"
 
 // DEFINE NDEBUG TO DISABLE LOGS
 
@@ -26,13 +22,14 @@ FILE* logOutf = NULL;
             }                                                                                     \
             flogIntern (&a, typeid (a).name (), #a, sizeof (a), __FILE__, __FUNCTION__, __LINE__)
 
-
-#define flogFileInit if (logOutf == NULL){                                                        \
+#define flogprintf(...)                                                                           \
+    if (logOutf == NULL){                                                                         \
                 logOutf = fopen ("logs_out", "a");                                                \
                 setvbuf (logOutf, NULL, _IONBF, 0);                                               \
                 fprintf (logOutf, "----------------------------------------\n"                    \
                 "Logging session at compiled time : %s %s \n\n", __TIME__, __DATE__);             \
-            }
+    }                                                                                             \
+    fprintf (logOutf, __VA_ARGS__)
 
 #ifdef NDEBUG
 #define flog(a) ;
